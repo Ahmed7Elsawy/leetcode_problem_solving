@@ -1,8 +1,9 @@
 class Solution {
     fun checkIfExist(arr: IntArray): Boolean {
-        val complement = arr.map { it * 2 }
+        val complement = hashMapOf<Int, Int>()
+        arr.forEachIndexed { i, x -> complement[x * 2] = i }
         for ((index, item) in arr.withIndex()) {
-            val result = complement.filterIndexed { i, it -> it == item && index != i }
+            val result = complement.filter { it.key == item && index != it.value }
             if (result.isNotEmpty())
                 return true
         }
