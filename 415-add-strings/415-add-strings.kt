@@ -10,13 +10,13 @@ class Solution {
             val result = hold.toInt() + n1.toInt() + n2.toInt()
             val res = result % 10
             hold = (result / 10).toString()
-            list.add(0, res.toString())
+            list.add(res.toString())
             index1--
             index2--
         }
         if (hold != "0")
-            list.add(0, hold)
-
+            list.add(hold)
+        list.reverse()
         return list.joinToString("")
     }
 }
