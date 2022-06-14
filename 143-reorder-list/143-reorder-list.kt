@@ -9,6 +9,8 @@
  */
 class Solution {
     fun reorderList(head: ListNode?): Unit {
+        
+        // get mid of list
         var mid = head
         var end = head?.next
         while (end?.next != null) {
@@ -16,8 +18,8 @@ class Solution {
             end = end.next?.next
         }
 
+        // reverse second half of the list
         var head2 = mid?.next
-
         var current = head2
         var current2: ListNode?
         while (current != null) {
@@ -31,6 +33,7 @@ class Solution {
         mid?.next = null
 
 
+        // merge two halves
         current = head
         var next1: ListNode?
         var next2: ListNode?
