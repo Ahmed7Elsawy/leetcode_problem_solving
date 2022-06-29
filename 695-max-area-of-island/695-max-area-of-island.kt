@@ -4,23 +4,21 @@ class Solution {
     private var size = 0
     private val visited = mutableListOf<Pair<Int, Int>>()
     fun maxAreaOfIsland(grid: Array<IntArray>): Int {
-
         for (i in 0..grid.lastIndex) {
             for (j in 0..grid[0].lastIndex) {
-                val x = visited.filter { it.first == i && it.second == j }
-                if (grid[i][j] == 1 && x.isEmpty()) {
+                val x = visited.firstOrNull { it.first == i && it.second == j }
+                if (grid[i][j] == 1 && x == null) {
                     dfs(grid, i, j, 0)
                 }
             }
         }
-
         return size
     }
 
     private fun dfs(grid: Array<IntArray>, i: Int, j: Int, currentSize: Int): Int {
         if (grid[i][j] == 0) return currentSize
-        val x = visited.filter { it.first == i && it.second == j }
-        if (x.isNotEmpty()) return currentSize
+        val x = visited.firstOrNull { it.first == i && it.second == j }
+        if (x != null) return currentSize
 
         visited.add(i to j)
         var cs = currentSize + 1
@@ -42,4 +40,5 @@ class Solution {
 
         return cs
     }
+
 }
