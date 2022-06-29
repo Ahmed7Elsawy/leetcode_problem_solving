@@ -22,7 +22,20 @@ class Solution {
     private fun merge(root1: TreeNode?, root2: TreeNode?, before: TreeNode?, isLeft: Boolean = true) {
         if (root1 == null && root2 == null) return
 
-        val mergedVal = (root1?.`val` ?: 0) + (root2?.`val` ?: 0)
+        if (root1 == null) {
+            if (root == null) root = root2
+            else if (isLeft) before?.left = root2
+            else before?.right = root2
+            return
+        }
+        if (root2 == null) {
+            if (root == null) root = root1
+            else if (isLeft) before?.left = root1
+            else before?.right = root1
+            return
+        }
+
+        val mergedVal = (root1.`val`) + (root2.`val`)
         val mergedNode = TreeNode(mergedVal)
         if (root == null) {
             root = mergedNode
@@ -31,8 +44,8 @@ class Solution {
             else before?.right = mergedNode
         }
 
-        merge(root1?.left, root2?.left, mergedNode, true)
-        merge(root1?.right, root2?.right, mergedNode, false)
+        merge(root1.left, root2.left, mergedNode, true)
+        merge(root1.right, root2.right, mergedNode, false)
     }
 
 }
