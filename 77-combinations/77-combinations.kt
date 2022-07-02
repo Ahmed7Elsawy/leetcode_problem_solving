@@ -10,7 +10,7 @@ class Solution {
             list.add(list2)
             return
         }
-        if (list2.size > k || current > n) return
+        if (list2.size > k || current > n || list2.size + n - current + 1 < k) return
 
         combine(n, k, current + 1, list2.toMutableList().apply { add(current) })
         combine(n, k, current + 1, list2)
