@@ -5,7 +5,7 @@ class Solution {
     private lateinit var myTriangle: List<MutableList<Int>>
     fun minimumTotal(triangle: List<List<Int>>): Int {
         myTriangle =
-            List<MutableList<Int>>(triangle.size + 1) { MutableList<Int>(triangle[triangle.lastIndex].size) { -1 } }
+            List<MutableList<Int>>(triangle.size){ index ->  MutableList<Int>(triangle[index].size) { -1 } }
 
         return calculate(triangle, 0, 0)
     }
