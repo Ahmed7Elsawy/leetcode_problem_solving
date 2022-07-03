@@ -12,8 +12,9 @@ class Solution {
         }
         if (n < 0) return 0
         if (list[n] != -1) return list[n]
-        list[n] = calculate(n - 1)
-        list[n] += calculate(n - 2)
+        var c = calculate(n - 1)
+        c += calculate(n - 2)
+        list[n] = c
         return list[n]
     }
 }
