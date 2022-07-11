@@ -11,6 +11,6 @@ class Solution {
         list.add(newList)
         if (index+1 >= nums.size) return
         sub(nums, oldList, index + 1)
-        sub(nums, newList.toList(), index + 1)
+        sub(nums, newList, index + 1)
     }
 }
