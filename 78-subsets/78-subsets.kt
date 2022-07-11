@@ -7,10 +7,9 @@ class Solution {
     }
 
     private fun sub(nums: IntArray, oldList: List<Int>, index: Int) {
-        if (index >= nums.size)
-            return
         val newList = oldList.toMutableList().apply { add(nums[index]) }
         list.add(newList)
+        if (index+1 >= nums.size) return
         sub(nums, oldList, index + 1)
         sub(nums, newList.toList(), index + 1)
     }
