@@ -1,12 +1,10 @@
 class Solution {
     fun minPartitions(n: String): Int {
         var count = 0
-        var num = n
-        while (num.isNotEmpty()) {
+        var num1 = n.map { it }
+        while (num1.isNotEmpty()) {
             count++
-            num = num.mapNotNull { if (it == '0') null else it - 1 }.joinToString("")
-            if (num.all { it == '0' })
-                break
+            num1 = num1.mapNotNull { if (it == '0' || it - 1 == '0') null else it - 1 }
         }
         return count
     }
