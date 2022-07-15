@@ -19,7 +19,7 @@ class Solution {
     private fun sum(root: TreeNode, level: Int) {
         if (level >= arr.size) {
             arr.add(root.`val`)
-        } else {
+        } else if (level == arr.lastIndex) {
             arr[level] = arr[level] + root.`val`
         }
         root.left?.let { sum(it, level + 1) }
