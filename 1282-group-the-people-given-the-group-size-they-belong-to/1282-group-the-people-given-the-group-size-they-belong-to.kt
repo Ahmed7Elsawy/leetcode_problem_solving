@@ -5,16 +5,16 @@ class Solution {
         val list = groupSizes.mapIndexed { index, i -> i to index }
                 .sortedBy { it.first }
 
-        val group = mutableListOf<Int>()
+        var group = mutableListOf<Int>()
         for (item in list) {
             group.add(item.second)
             if (group.size == item.first) {
-                result.add(group.toList())
-                group.clear()
+                result.add(group)
+                group = mutableListOf<Int>()
             }
         }
         if (group.isNotEmpty())
-            result.add(group.toList())
+            result.add(group)
 
         return result
     }
