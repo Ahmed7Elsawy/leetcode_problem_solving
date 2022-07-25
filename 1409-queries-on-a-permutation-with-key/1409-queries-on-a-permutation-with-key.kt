@@ -1,17 +1,15 @@
-
 class Solution {
     fun processQueries(queries: IntArray, m: Int): IntArray {
-        val list2 = Array(m) { it + 1 }
-        println(list2.joinToString())
-        val result = mutableListOf<Int>()
-        for (i in queries) {
-            val index = list2.indexOf(i)
-            result.add(index)
-            for (index in index downTo 1) {
-                list2[index] = list2[index - 1]
+        val list = MutableList(m) { it + 1 }
+        val result = IntArray(queries.size)
+        for ((i, item) in queries.withIndex()) {
+            val index = list.indexOf(item)
+            result[i] = index
+            list.apply {
+                removeAt(index)
+                add(0, item)
             }
-            list2[0] = i
         }
-        return result.toIntArray()
+        return result
     }
 }
